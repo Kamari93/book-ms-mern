@@ -15,7 +15,7 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: ["https://book-ms-client.vercel.app/"],
+    origin: ["https://book-ms-client.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
