@@ -9,10 +9,11 @@ const EditBook = () => {
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
+  axios.defaults.withCredentials = true;
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/book/book/${id}`)
+      .get(`https://book-ms-server.vercel.app/book/book/${id}`)
       .then((res) => {
         // console.log(res);
         setTitle(res.data.title);

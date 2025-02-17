@@ -5,9 +5,10 @@ import "../css/Book.css";
 
 const Books = ({ role }) => {
   const [books, setBooks] = useState([]);
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("http://localhost:5000/book/books")
+      .get("https://book-ms-server.vercel.app/book/books")
       .then((res) => {
         setBooks(res.data);
         console.log(res.data);

@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 const Logout = ({ setRole }) => {
   const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("http://localhost:5000/auth/logout")
+      .get("https://book-ms-server.vercel.app/auth/logout")
       .then((res) => {
         if (res.data.logout) {
           setRole("");

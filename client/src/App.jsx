@@ -17,7 +17,7 @@ function App() {
   axios.defaults.withCredentials = true; //lets us access the cookies
   useEffect(() => {
     axios
-      .get("http://localhost:5000/auth/verify")
+      .get("https://book-ms-server.vercel.app/auth/verify")
       .then((res) => {
         if (res.data.login) {
           setRole(res.data.role);

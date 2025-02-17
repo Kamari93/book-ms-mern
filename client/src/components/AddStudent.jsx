@@ -15,7 +15,7 @@ const AddStudent = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/student/register", {
+      .post("https://book-ms-server.vercel.app/student/register", {
         roll,
         username,
         password,

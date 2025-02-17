@@ -5,9 +5,10 @@ import { useNavigate, useParams } from "react-router-dom";
 const DeleteBook = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .delete(`http://localhost:5000/book/book/${id}`)
+      .delete(`https://book-ms-server.vercel.app/book/book/${id}`)
       .then((res) => {
         if (res.data.deleted) {
           navigate("/books");

@@ -14,7 +14,11 @@ const Login = ({ setRoleVar }) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/auth/login", { username, password, role })
+      .post("https://book-ms-server.vercel.app/auth/login", {
+        username,
+        password,
+        role,
+      })
       .then((res) => {
         console.log(res);
         if (res.data.login && res.data.role === "admin") {

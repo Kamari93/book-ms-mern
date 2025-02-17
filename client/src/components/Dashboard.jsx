@@ -6,10 +6,11 @@ const Dashboard = () => {
   const [students, setStudents] = useState(0);
   const [admin, setAdmin] = useState(0);
   const [books, setBooks] = useState(0);
+  axios.defaults.withCredentials = true;
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/dashboard")
+      .get("https://book-ms-server.vercel.app/dashboard")
       .then((res) => {
         if (res.data.ok) {
           setStudents(res.data.students);

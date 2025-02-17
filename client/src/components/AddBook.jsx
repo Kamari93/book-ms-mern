@@ -14,7 +14,7 @@ const AddBook = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/book/add", {
+      .post("https://book-ms-server.vercel.app/book/add", {
         title,
         author,
         imageUrl,
