@@ -25,7 +25,7 @@ router.post("/login", async (req, res) => {
         process.env.Admin_Key
       );
       // res.cookie("token", token, { httpOnly: true, secure: true });
-      res.cookie("token", token, { httpOnly: true });
+      res.cookie("token", token);
       return res.json({ login: true, role: "admin" });
     } else if (role === "student") {
       const student = await Student.findOne({ username });
@@ -41,7 +41,7 @@ router.post("/login", async (req, res) => {
         process.env.Student_Key
       );
       // res.cookie("token", token, { httpOnly: true, secure: true });
-      res.cookie("token", token, { httpOnly: true });
+      res.cookie("token", token);
       return res.json({ login: true, role: "student" });
     } else {
     }
