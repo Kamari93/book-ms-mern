@@ -28,7 +28,7 @@ const EditBook = () => {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:5000/book/book/${id}`, {
+      .put(`https://book-ms-server.vercel.app/book/book/${id}`, {
         title,
         author,
         imageUrl,
