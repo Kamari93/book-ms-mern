@@ -10,7 +10,7 @@ const AddStudent = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
   const handleSubmit = (e) => {
     e.preventDefault();
 
