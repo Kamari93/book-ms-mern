@@ -14,11 +14,15 @@ const AddBook = () => {
     e.preventDefault();
 
     axios
-      .post("https://book-ms-server.vercel.app/book/add", {
-        title,
-        author,
-        imageUrl,
-      })
+      .post(
+        "https://book-ms-server.vercel.app/book/add",
+        {
+          title,
+          author,
+          imageUrl,
+        },
+        { withCredentials: true }
+      )
       .then((res) => {
         // console.log(res);
         if (res.data.added) {
