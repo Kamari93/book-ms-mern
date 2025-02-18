@@ -38,7 +38,7 @@
 
 .hero-image {
   flex: 1;
-  background: url("images/bms-logo.jpg") center;
+  background: url("../public/images/bms-logo.jpg") center;
   background-size: 90%;
   background-repeat: no-repeat;
 }
