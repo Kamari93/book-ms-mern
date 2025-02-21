@@ -27,7 +27,7 @@ router.post("/login", async (req, res) => {
       res.cookie("token", token, {
         httpOnly: true,
         secure: true,
-        sameSite: "none",
+        sameSite: "none", // Allows cross-origin requests
       });
       // res.cookie("token", token);
       return res.json({ login: true, role: "admin" });
