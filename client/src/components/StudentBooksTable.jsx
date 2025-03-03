@@ -10,6 +10,7 @@ const StudentBooksTable = () => {
   const [loading, setLoading] = useState(true);
   const [studentName, setStudentName] = useState("");
   const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
 
   const fetchBooks = async () => {
     try {
