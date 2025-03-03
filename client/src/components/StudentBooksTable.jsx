@@ -17,7 +17,10 @@ const StudentBooksTable = () => {
       if (studentId) {
         // Admin viewing specific student's books
         res = await axios.get(
-          `https://book-ms-server.vercel.app/student/${studentId}/books`
+          `https://book-ms-server.vercel.app/student/${studentId}/books`,
+          {
+            withCredentials: true,
+          }
         );
         // setUsername(res.data.username);
         setCheckedOutBooks(res.data.checkedOutBooks);
