@@ -44,7 +44,11 @@ router.post("/login", async (req, res) => {
         { username: student.username, role: "student" },
         process.env.Student_Key
       );
-      res.cookie("token", token, { httpOnly: true, secure: true });
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      });
       // res.cookie("token", token);
       return res.json({ login: true, role: "student" });
     } else {
