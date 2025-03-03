@@ -24,7 +24,11 @@ router.post("/login", async (req, res) => {
         { username: admin.username, role: "admin" },
         process.env.Admin_Key
       );
-      res.cookie("token", token, { httpOnly: true, secure: true });
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      });
       // res.cookie("token", token);
       return res.json({ login: true, role: "admin" });
     } else if (role === "student") {
