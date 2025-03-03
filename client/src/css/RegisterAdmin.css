@@ -1,0 +1,90 @@
+:root {
+  --primary-color: #59756f;
+  --secondary-color: #d68539;
+  --tertiary-color: #fff;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+}
+
+.register-page {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--primary-color);
+}
+
+.register-container {
+  background-color: var(--tertiary-color);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
+
+.register-container h2 {
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+}
+
+.btn-register {
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.btn-register:hover {
+  background-color: darken(var(--secondary-color), 10%);
+  color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+}
+
+/* Success & Error Messages */
+.success-message {
+  color: var(--success-color);
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-weight: bold;
+  margin-bottom: 15px;
+}

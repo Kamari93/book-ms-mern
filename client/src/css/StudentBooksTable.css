@@ -1,0 +1,88 @@
+/* StudentBooksTable.css */
+
+:root {
+  --primary-color: #59756f;
+  --secondary-color: #d68539;
+  --tertiary-color: #fff;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+  --text-color: #333;
+  --back-btn: #538d9c;
+  --return-btn: #cc4444;
+  --return-btn-hover: #e95f39;
+  --back-btn-hover: #4444cc;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.student-books-container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: var(--tertiary-color);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  border-radius: 8px;
+}
+
+.student-books-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.student-books-table th,
+.student-books-table td {
+  border: 1px solid var(--shadow-color);
+  padding: 12px;
+  text-align: left;
+  color: var(--text-color);
+}
+
+.student-books-table th {
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+}
+
+.student-books-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.student-books-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+h2 {
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.error-message {
+  color: var(--error-color);
+  text-align: center;
+}
+
+.return-book-button {
+  background-color: var(--return-btn);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.return-book-button:hover {
+  background-color: var(--return-btn-hover);
+  transform: scale(1.05);
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: var(--back-btn);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: var(--back-btn-hover);
+}

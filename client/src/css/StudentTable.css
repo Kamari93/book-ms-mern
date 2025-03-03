@@ -1,0 +1,113 @@
+:root {
+  --primary-color: #59756f;
+  --secondary-color: #d68539;
+  --tertiary-color: #fff;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+  --text-color: #333;
+  --subtext-color: #555;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.student-table-container {
+  padding: 20px;
+  background-color: var(--tertiary-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.student-table-container h2 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.student-table th,
+.student-table td {
+  border: 1px solid var(--shadow-color);
+  padding: 12px;
+  text-align: left;
+  color: var(--text-color);
+}
+
+.student-table th {
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+}
+
+.student-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.student-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.student-table input[type="text"] {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid var(--shadow-color);
+  border-radius: 4px;
+}
+
+.student-table button {
+  padding: 6px 12px;
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 80px; /* Set fixed width */
+  height: 36px; /* Set fixed height */
+}
+
+.button-group {
+  gap: 10px; /*Adds space between buttons */
+  display: flex;
+}
+
+.student-table button:hover {
+  /* background-color: darken(var(--secondary-color), 10%); */
+  background-color: var(--primary-color);
+  /* border: 2px solid var(--primary-color); */
+  color: var(--tertiary-color);
+}
+
+.student-table .success {
+  color: var(--success-color);
+}
+
+.student-table .error {
+  color: var(--error-color);
+}
+
+.book-status-cell {
+  display: flex;
+}
+
+.checked-out-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 15px; /* Increased padding */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  min-width: max-content; /* Makes the button automatically fit its content */
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides overflow text */
+  text-overflow: ellipsis; /* Adds '...' if text is too long */
+  /* transition: transform 0.2s ease-in-out; */
+}
+
+.checked-out-btn:hover {
+  background-color: var(--secondary-color);
+  /* transform: scale(1.05); Smooth hover effect */
+}
