@@ -2,7 +2,7 @@
 
 A simple **Book Management System** built using the **MERN stack (MongoDB, Express, React, Node.js)**. This project allows users to **add, update, delete, and view books** in a database.
 
-Live App: https://book-ms-client.vercel.app/
+Live App: book-ms-client.vercel.app
 
 ## 🚀 **Features**
 
