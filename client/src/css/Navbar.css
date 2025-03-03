@@ -1,48 +1,89 @@
-/* make vars for colors */
+/* Global Variables */
 :root {
-  --primary-color: #59756f;
-  --secondary-color: #d68539;
-  --tertiary-color: #fff;
+  --primary-color: #59756f; /* Deep Green */
+  --secondary-color: #d68539; /* Orange */
+  --tertiary-color: #fff; /* White */
+  --hover-color: #e7a75d;
+  --dark-bg: #333;
+  --dark-text: #f1f1f1;
 }
 
-* {
+/* * {
   margin: 0;
   padding: 0;
-}
+  box-sizing: border-box;
+} */
 
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 12px;
-  background-color: var(--primary-color);
-  color: var(--tertiary-color);
-  padding-inline: 45px;
-  border-bottom: 1px solid var(--secondary-color);
-}
-
-.navbar-left {
-  display: flex;
   align-items: center;
+  padding: 12px 45px;
+  background-color: var(--primary-color);
+  border-bottom: 1px solid var(--secondary-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.navbar-brand {
-  font-size: 1.8rem;
-  margin-right: 20px;
-  text-decoration: none;
+.navbar-left .navbar-brand {
+  font-size: 2rem;
   color: var(--secondary-color);
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .navbar-right {
   display: flex;
-  align-items: center;
+  gap: 20px;
+  transition: transform 0.3s ease-in-out;
 }
 
 .navbar-link {
-  color: var(--secondary-color);
+  color: var(--tertiary-color);
   text-decoration: none;
-  margin-left: 20px;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  position: relative;
 }
 
 .navbar-link:hover {
+  color: var(--hover-color);
+}
+
+.navbar-link.active {
   text-decoration: underline;
+  font-weight: bold;
+}
+
+.navbar-toggle {
+  display: none;
+  font-size: 2rem;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.navbar-right.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--primary-color);
+  width: 100%;
+  padding: 20px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Friendly */
+
+@media (max-width: 900px) {
+  .navbar-right {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
 }

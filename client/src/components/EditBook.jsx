@@ -7,6 +7,7 @@ const EditBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [totalCopies, setTotalCopies] = useState(1); // New field
   const navigate = useNavigate();
   const { id } = useParams();
   axios.defaults.withCredentials = true;
@@ -19,6 +20,7 @@ const EditBook = () => {
         setTitle(res.data.title);
         setAuthor(res.data.author);
         setImageUrl(res.data.imageUrl);
+        setTotalCopies(res.data.totalCopies || 1); // Handle older books
       })
       .catch((err) => console.log(err));
   }, []);
@@ -27,11 +29,17 @@ const EditBook = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (totalCopies < 1 || totalCopies > 3) {
+      alert("Total copies must be between 1 and 3");
+      return;
+    }
+
     axios
       .put(`https://book-ms-server.vercel.app/book/book/${id}`, {
         title,
         author,
         imageUrl,
+        totalCopies,
       })
       .then((res) => {
         // console.log(res);
@@ -76,6 +84,17 @@ const EditBook = () => {
             name="image"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="copies">Total Copies (1-3):</label>
+          <input
+            type="number"
+            id="copies"
+            value={totalCopies}
+            min="1"
+            max="3"
+            onChange={(e) => setTotalCopies(Number(e.target.value))}
           />
         </div>
         <button type="submit">Update</button>

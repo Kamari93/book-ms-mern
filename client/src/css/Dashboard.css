@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --primary-color: #59756f;
   --secondary-color: #d68539;
   --tertiary-color: #fff;
@@ -23,4 +23,71 @@
   background-color: var(--tertiary-color);
   text-align: center;
   color: var(--primary-color);
+}
+
+.dashboard-data {
+  color: var(--tertiary-color);
+} */
+
+:root {
+  --primary-color: #59756f;
+  --secondary-color: #d68539;
+  --tertiary-color: #fff;
+}
+
+.dashboard {
+  padding: 40px;
+  background-color: var(--primary-color);
+  text-align: center;
+  color: var(--tertiary-color);
+  height: 100vh;
+}
+
+.dashboard-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap; /* Already makes it stack on smaller screens */
+  padding: 20px;
+}
+
+.dashboard-card {
+  width: 250px;
+  text-align: center;
+  border-radius: 12px;
+  padding: 20px;
+  background: var(--secondary-color);
+  color: var(--tertiary-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: scale(1.05);
+}
+
+/* Tablet Screens */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center;
+  }
+
+  .dashboard-card {
+    width: 80%; /* Make cards wider for better mobile fit */
+    margin-bottom: 20px;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  .dashboard-card {
+    width: 100%; /* Full width on smaller screens */
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .dashboard h1 {
+    font-size: 1.5rem; /* Smaller heading for mobile */
+  }
 }

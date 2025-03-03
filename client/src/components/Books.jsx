@@ -5,6 +5,7 @@ import "../css/Book.css";
 
 const Books = ({ role }) => {
   const [books, setBooks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); // Search term state
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
@@ -15,11 +16,36 @@ const Books = ({ role }) => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  // Filter books based on title or author
+  const filteredBooks = books.filter(
+    (book) =>
+      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.author.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="book-list">
-      {books.map((book) => {
-        return <BookCard key={book._id} book={book} role={role} />;
-      })}
+    <div className="book-container">
+      <h2>Book List</h2>
+
+      {/* Search Input */}
+      <input
+        type="text"
+        placeholder="Search by title or author..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-input"
+      />
+
+      <div className="book-list">
+        {filteredBooks.length > 0 ? (
+          filteredBooks.map((book) => (
+            <BookCard key={book._id} book={book} role={role} />
+          ))
+        ) : (
+          <p className="no-books">No books found</p>
+        )}
+      </div>
     </div>
   );
 };

@@ -24,7 +24,7 @@ const AddStudent = () => {
       .then((res) => {
         // console.log(res);
         if (res.data.registered) {
-          navigate("/dashboard");
+          navigate("/studenttable");
         }
         console.log(res);
       })

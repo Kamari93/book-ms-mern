@@ -7,11 +7,17 @@ const AddBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [totalCopies, setTotalCopies] = useState(1); // New field
   const navigate = useNavigate();
 
   // axios.defaults.withCredentials = true;
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (totalCopies < 1 || totalCopies > 3) {
+      alert("Total copies must be between 1 and 3");
+      return;
+    }
 
     axios
       .post(
@@ -20,6 +26,7 @@ const AddBook = () => {
           title,
           author,
           imageUrl,
+          totalCopies,
         },
         { withCredentials: true }
       )
@@ -66,6 +73,17 @@ const AddBook = () => {
             name="image"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="copies">Total Copies:</label>
+          <input
+            type="number"
+            id="copies"
+            value={totalCopies}
+            min="1"
+            max="3"
+            onChange={(e) => setTotalCopies(Number(e.target.value))}
           />
         </div>
         <button type="submit">Add</button>

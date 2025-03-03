@@ -16,24 +16,27 @@ const Dashboard = () => {
           setStudents(res.data.students);
           setAdmin(res.data.admins);
           setBooks(res.data.books);
-          // console.log(res);
+          // console.log(res.data);
         }
       })
       .catch((err) => console.log(err));
   }, []);
   return (
     <div className="dashboard">
-      <div className="dashboard-box">
-        <h2>Total Books</h2> <br />
-        <h2>{books}</h2>
-      </div>
-      <div className="dashboard-box">
-        <h2>Total Students</h2> <br />
-        <h2>{students}</h2>
-      </div>
-      <div className="dashboard-box">
-        <h2>Total Admins</h2> <br />
-        <h2>{admin}</h2>
+      <h1>Dashboard Overview</h1>
+      <div className="dashboard-grid">
+        <div className="dashboard-card">
+          <h2>Total Books</h2>
+          <h3>{books}</h3>
+        </div>
+        <div className="dashboard-card">
+          <h2>Total Students</h2>
+          <h3>{students}</h3>
+        </div>
+        <div className="dashboard-card">
+          <h2>Total Admins</h2>
+          <h3>{admin}</h3>
+        </div>
       </div>
     </div>
   );

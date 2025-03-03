@@ -6,6 +6,7 @@ import "./db.js";
 import { AdminRouter } from "./routes/auth.js";
 import { studentRouter } from "./routes/student.js";
 import { bookRouter } from "./routes/book.js";
+import { adminRegistration } from "./routes/admin.js";
 import { Book } from "./models/Book.js";
 import { Student } from "./models/Student.js";
 import { Admin } from "./models/Admin.js";
@@ -15,10 +16,9 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: ["https://book-ms-client.vercel.app"],
+    origin: ["https://book-ms-client.vercel.app", "http://localhost:5000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-    // allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(cookieParser());
@@ -26,6 +26,7 @@ app.use(express.json());
 app.use("/auth", AdminRouter); // routes
 app.use("/student", studentRouter);
 app.use("/book", bookRouter);
+app.use("/admin", adminRegistration);
 
 app.get("/dashboard", async (req, res) => {
   try {
@@ -40,11 +41,6 @@ app.get("/dashboard", async (req, res) => {
 });
 
 //run server on port 5000
-// app.listen(process.env.PORT, () => {
-//   console.log(`Server running on port ${process.env.PORT}`);
-// });
-
-const PORT = process.env.PORT || 5000; // Use dynamic port for production
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
 });

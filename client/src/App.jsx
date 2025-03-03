@@ -10,6 +10,11 @@ import AddStudent from "./components/AddStudent";
 import AddBook from "./components/AddBook";
 import EditBook from "./components/EditBook";
 import DeleteBook from "./components/DeleteBook";
+import RegisterAdmin from "./components/RegisterAdmin";
+import ViewBook from "./components/ViewBook";
+import StudentTable from "./components/StudentTable";
+import AdminTable from "./components/AdminTable";
+import StudentBooksTable from "./components/StudentBooksTable";
 import axios from "axios";
 
 function App() {
@@ -41,6 +46,15 @@ function App() {
         <Route path="/addbook" element={<AddBook />} />
         <Route path="/book/:id" element={<EditBook />} />
         <Route path="/delete/:id" element={<DeleteBook />} />
+        <Route path="/registeradmin" element={<RegisterAdmin />} />
+        <Route path="/viewbook/:id" element={<ViewBook />} />
+        <Route path="/studenttable" element={<StudentTable />} />
+        <Route path="/admintable" element={<AdminTable />} />
+        <Route path="/studentbookstable" element={<StudentBooksTable />} />
+        <Route
+          path="/studentbookstable/:studentId"
+          element={<StudentBooksTable />}
+        />
       </Routes>
     </BrowserRouter>
   );

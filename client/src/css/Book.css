@@ -4,51 +4,95 @@
   --tertiary-color: #fff;
 }
 
-.book-list {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+/* Container for the entire book list */
+.book-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  text-align: center;
 }
 
+/* Search Bar Styling */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid var(--shadow-color);
+  border-radius: 6px;
+  font-size: 16px;
+  color: var(--text-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* search bar focus color */
+.search-input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 4px var(--secondary-color);
+}
+
+/* Responsive Grid Layout */
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  justify-content: center;
+  align-items: start; /* Ensures uniform height */
+  padding: 10px;
+  max-width: 1000px; /* Prevents excessive stretching */
+  margin: auto;
+}
+
+/* Book Card Styling */
 .book-card {
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
-  margin: 10px;
-  width: 200px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--tertiary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 220px; /* Prevents expanding too much */
+  min-width: 200px;
 }
 
 .book-card:hover {
   transform: scale(1.05);
 }
 
+/* Ensure images scale properly */
 .book-card .book-image {
   width: 100%;
-  height: 150px;
+  height: 180px;
   object-fit: cover;
 }
 
 .book-card .book-details {
-  padding: 10px;
+  /* padding: 12px; */
+  padding: auto;
+  text-align: center;
 }
 
+/* Buttons Container */
 .book-card .book-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 8px;
   padding: 10px;
+  width: 100%;
   background-color: var(--primary-color);
-  text-decoration: none;
 }
 
+/* Button Styling */
 .book-card button {
   background-color: var(--secondary-color);
   color: var(--tertiary-color);
   border: none;
-  width: 80px; /* Set fixed width */
-  height: 36px; /* Set fixed height */
+  width: 80px; /* Ensures uniform button size */
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,21 +101,52 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   text-decoration: none;
+  font-size: 14px;
+  flex: 1; /* Ensures equal spacing when multiple buttons exist */
+  min-width: 80px; /* Prevents shrinking too much */
 }
 
-.btn-link {
-  text-decoration: none;
-  color: var(--tertiary-color);
-  flex: 1; /* Make both buttons take up equal space */
-  display: flex;
+/* Center align when there is only one button */
+.book-card .book-actions:has(button:only-child) {
   justify-content: center;
 }
 
-.btn-link button:hover {
+.book-card button:hover {
   background-color: var(--tertiary-color);
   color: var(--secondary-color);
 }
 
-.link:hover {
-  color: var(--secondary-color);
+/* Remove underline from all Link elements */
+.btn-link {
+  text-decoration: none;
+  display: inline-block; /* Ensures it behaves like a button wrapper */
+}
+
+/* .btn-link button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+} */
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .book-list {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .book-list {
+    grid-template-columns: 1fr;
+  }
+
+  .book-card {
+    width: 90%;
+    margin: auto;
+  }
 }

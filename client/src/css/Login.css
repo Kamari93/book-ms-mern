@@ -68,3 +68,10 @@
   margin-top: 8px;
   width: 100%;
 }
+
+.register-link {
+  text-align: center;
+  margin-top: 15px;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
