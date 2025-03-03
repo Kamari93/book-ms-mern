@@ -18,6 +18,11 @@ const studentSchema = new Schema({
   grade: {
     type: String,
   },
+  checkedOutBooks: {
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
+    default: [], // ✅ Sets default to an empty array
+  },
+  // checkedOutBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }], // New field
 });
 
 const studentModel = mongoose.model("Student", studentSchema);
