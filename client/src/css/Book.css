@@ -2,6 +2,12 @@
   --primary-color: #59756f;
   --secondary-color: #d68539;
   --tertiary-color: #fff;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+  --text-color: #333;
+  --subtext-color: #555;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --hover: #4444cc;
 }
 
 /* Container for the entire book list */
@@ -149,4 +155,33 @@
     width: 90%;
     margin: auto;
   }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 8px 12px;
+  border: none;
+  background: var(--secondary-color);
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: var(--hover);
+}
+
+.pagination .active-page {
+  border: 3px solid var(--subtext-color); /* Add border to current page */
 }

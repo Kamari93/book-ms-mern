@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../css/StudentTable.css";
 import { useNavigate } from "react-router-dom"; // Import navigate
+// import ReactPaginate from "react-paginate";
 
 const StudentTable = () => {
   const [students, setStudents] = useState([]);
@@ -12,6 +13,8 @@ const StudentTable = () => {
   });
   const [searchTerm, setSearchTerm] = useState(""); // Search term state
   const navigate = useNavigate(); // Initialize navigation
+  const [currentPage, setCurrentPage] = useState(1);
+  const studentsPerPage = 10;
 
   useEffect(() => {
     fetchStudents();
@@ -86,6 +89,59 @@ const StudentTable = () => {
       student.grade.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const indexOfLastStudent = currentPage * studentsPerPage;
+  const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+  const currentStudents = filteredStudents.slice(
+    indexOfFirstStudent,
+    indexOfLastStudent
+  );
+  const totalPages = Math.ceil(filteredStudents.length / studentsPerPage);
+
+  // Pagination Handlers
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const nextPage = () =>
+    setCurrentPage(
+      (prev) =>
+        Math.min(prev + 1, Math.ceil(filteredStudents.length / studentsPerPage)) //Math.ceil returns the smallest integer greater than or equal to the given number
+    );
+  const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1)); //the second param on the Math.max is the min value
+
+  // Function to display pages with ellipsis
+  const getPaginationNumbers = () => {
+    const pageNumbers = [];
+    if (totalPages <= 5) {
+      // Show all pages if 5 or fewer pages
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else {
+      // Always show the first page
+      pageNumbers.push(1);
+
+      if (currentPage > 3) {
+        pageNumbers.push("...");
+      }
+
+      // Show 2 pages before and after current page
+      for (
+        let i = Math.max(2, currentPage - 1);
+        i <= Math.min(currentPage + 1, totalPages - 1);
+        i++
+      ) {
+        pageNumbers.push(i);
+      }
+
+      if (currentPage < totalPages - 2) {
+        pageNumbers.push("...");
+      }
+
+      // Always show the last page
+      pageNumbers.push(totalPages);
+    }
+
+    return pageNumbers;
+  };
+
   return (
     <div className="student-table-container">
       <h2>All Students</h2>
@@ -111,7 +167,7 @@ const StudentTable = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredStudents.map((student, index) => (
+          {currentStudents.map((student, index) => (
             <tr key={student._id}>
               <td>{student.roll}</td>
               <td>
@@ -171,6 +227,30 @@ const StudentTable = () => {
           ))}
         </tbody>
       </table>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button onClick={prevPage} disabled={currentPage === 1}>
+            Previous
+          </button>
+
+          {getPaginationNumbers().map((number, index) => (
+            <button
+              key={index}
+              onClick={() => typeof number === "number" && paginate(number)}
+              className={currentPage === number ? "active-page" : ""}
+              disabled={number === "..."}
+            >
+              {number}
+            </button>
+          ))}
+
+          <button onClick={nextPage} disabled={currentPage === totalPages}>
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };
