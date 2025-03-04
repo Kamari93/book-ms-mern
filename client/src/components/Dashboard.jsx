@@ -34,7 +34,7 @@ const Dashboard = () => {
           <h3>{students}</h3>
         </div>
         <div className="dashboard-card">
-          <h2>Total Admins</h2>
+          <h2>Total Admin</h2>
           <h3>{admin}</h3>
         </div>
       </div>
