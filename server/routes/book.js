@@ -45,11 +45,41 @@ router.get("/book/:id", async (req, res) => {
 
 router.put("/book/:id", async (req, res) => {
   try {
+    const { totalCopies } = req.body;
     const id = req.params.id;
-    const book = await Book.findByIdAndUpdate({ _id: id }, req.body);
-    return res.json({ updated: true, book });
+
+    const book = await Book.findById(id);
+    if (!book) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+
+    // Count checked out copies
+    const checkedOutCount = await Student.countDocuments({
+      checkedOutBooks: book._id,
+    });
+
+    const availableCopies = book.totalCopies;
+
+    // Ensure admin cannot set copies more than allowed
+    if (checkedOutCount + totalCopies > 3) {
+      return res.status(400).json({
+        message:
+          "Cannot add more copies. Maximum limit reached. At least one book must be returned before adding more copies.",
+      });
+    }
+
+    // Proceed with update if condition is met
+    const updatedBook = await Book.findByIdAndUpdate(
+      id,
+      { ...req.body },
+      { new: true }
+    );
+
+    return res.json({ updated: true, book: updatedBook });
   } catch (err) {
-    return res.json(err);
+    return res
+      .status(500)
+      .json({ message: "Update failed", error: err.message });
   }
 });
 

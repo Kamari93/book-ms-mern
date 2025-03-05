@@ -46,10 +46,14 @@ const EditBook = () => {
         if (res.data.updated) {
           navigate("/books");
         } else {
-          console.log(res);
+          // console.log(res);
+          alert(res.data.message || "Failed to update book");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err)
+        alert(err.response?.data?.message || "An error occurred");
+      });
   };
 
   return (
