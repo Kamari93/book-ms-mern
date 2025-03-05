@@ -134,7 +134,7 @@
 }
 
 .pagination button:hover:not(:disabled) {
-  background: var(--hover);
+  background: var(--primary-color);
 }
 
 .pagination .active-page {
